@@ -18,13 +18,5 @@ There are no limits to the utility a to-do list application provides. The more w
 
 HTML, CSS, and JavaScript are the chosen technology for building this app.
 
-## Possible questions to answer here:
-* What is the motivation for the app?
-* What are the goals of the app?
-* What problem will the app solve?
-* What burning need do people have that the app will fulfill?
-* What form will the app take to fulfill its goals?
-* What sorts of features will the app have?
-* What are the selling points of the app?
-* What makes this app interesting/cool?
- 
+As a parent, student being able to stay oganised and on top of my task, is a rationale behind THL. The purpose of this app is to provide a means of list priotitization, in order to ensure effective planning and accompishment of task, reduce forgetfulness.
+A to-do list app like THL can help decrease anxiety, by providing a structure and record of our day to day accomplishment, increases motivation and productivity.
