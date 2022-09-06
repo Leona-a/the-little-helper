@@ -18,5 +18,5 @@ There are no limits to the utility a to-do list application provides. The more w
 
 HTML, CSS, and JavaScript are the chosen technology for building this app.
 
-As a parent, student being able to stay oganised and on top of my task, is a rationale behind THL. The purpose of this app is to provide a means of list priotitization, in order to ensure effective planning and accompishment of task, reduce forgetfulness.
+As students being able to stay oganised and on top of my task, is a rationale behind THL. The purpose of this app is to provide a means of list priotitization, in order to ensure effective planning and accompishment of task, reduce forgetfulness.
 A to-do list app like THL can help decrease anxiety, by providing a structure and record of our day to day accomplishment, increases motivation and productivity.
