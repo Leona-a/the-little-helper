@@ -32,12 +32,10 @@ ________________
 
 
 
-Software Engineering 
-Software Requirements Specification
-(SRS) Document
+# Software Engineering Software Requirements Specification (SRS) Document
 
 
-The Little Helper
+## The Little Helper
 
 
 09-20-2022
@@ -55,10 +53,6 @@ By: Chinwendu Afiemo, Gary Elam, Dahao Huang
 
 
 
-
-
-
-________________
 
 
 ________________
