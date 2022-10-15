@@ -1,0 +1,5 @@
+turquoise: 294d4a
+Brown: b66610
+Gray: 969696
+Black: 393939
+White: ffffff
