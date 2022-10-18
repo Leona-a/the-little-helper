@@ -19,19 +19,18 @@ function App() {
           </header>
 
           <tr className="App-text">
-              <td>Review algorithms and data structure</td>
+              <td className="border">Review algorithms and data structure</td>
               <td> <button className="App-button">Done</button>
                   <button className="App-button2">Delete</button></td>
-              <td><del>Solve calculus 2 textbook example</del></td>
+              <td className="border"><del>Solve calculus 2 textbook example</del></td>
               <td><button className="App-button">Restore</button>
                   <button className="App-button2">Delete</button></td>
           </tr>
-          <form className="App-text">
+          <p className="App-text2" >
 
-              Enter new list item title<input type="text" />
-             
-              <button type="submit" className="App-button">Create</button>
-          </form>
+              Enter new list item title :<input type="text" className="input" />
+              <button className="App-button3">Create</button>
+          </p>
       </div>
   );
 }
