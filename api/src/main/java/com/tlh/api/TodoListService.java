@@ -1,14 +1,29 @@
 package com.tlh.api;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TodoListService {
-    public List<TodoList> getTodoList() {
-        return List.of(
-                new TodoList(1, "My midterms study list", "user1"),
-                new TodoList(2, "My birthday wish list", "user1")
-        );
+    
+    @Autowired
+    TodoListRepo repo;
+    
+    public Iterable<TodoList> getTodoList() {
+        return repo.findAll();
+    }
+
+    public void delete(Integer id) {
+        var exists = repo.existsById(id);
+        if(!exists) {
+            throw new IllegalStateException("Missing resource identified by: " + id);
+        }
+        
+        repo.deleteById(id);
+    }
+    
+
+    public TodoList create(TodoList list) {
+        return repo.save(list);
     }
 }

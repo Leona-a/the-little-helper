@@ -1,5 +1,6 @@
 import React from "react";
-
+/*This is the Welcome page function, 
+it defines look the welcome page */
 
 function Welcome() {
   return (

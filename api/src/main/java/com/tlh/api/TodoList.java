@@ -1,7 +1,15 @@
 package com.tlh.api;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class TodoList {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String userToken;
@@ -16,6 +24,11 @@ public class TodoList {
 
     public TodoList(int id, String name, String userToken) {
         this.id = id;
+        this.name = name;
+        this.userToken = userToken;
+    }
+
+    public TodoList(String name, String userToken) {
         this.name = name;
         this.userToken = userToken;
     }

@@ -1,4 +1,19 @@
 import React, { useState } from "react";
+import { toast } from 'react-toastify';
+
+function createNewList(listName) {
+    if(listName.length < 2) {
+        toast.error("Please enter a valid list name");
+
+        return false;
+    }
+
+    return {
+        // id: Math.floor(Math.random() * (99999999 - 3 + 1)) + 3,
+        name: listName,
+        userToken: "user1",
+    }
+}
 
 function NewList({ addList }) {
     const [listName, setListName] = useState('');
@@ -17,11 +32,7 @@ function NewList({ addList }) {
             <button
                 className="inline-flex justify-center rounded-md border border-transparent bg-[black] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 type="submit"
-                onClick={() => addList({
-                    id: Math.floor(Math.random() * (99999999 - 3 + 1)) + 3,
-                    name: listName,
-                    userToken: "user1",
-                })}
+                onClick={() => addList(createNewList(listName))}
             >
                 Create
             </button>

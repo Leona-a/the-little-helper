@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { getLists } from "../../lib/listService";
+import { getLists, deleteList as deleteFromAPI, createList } from "../../lib/listService";
 import ListRow from "./listRow";
 import NewList from "./newList";
+
+/*This function maps lists features to List components */
 
 function Lists() {
   const [lists, setLists] = useState([]);
@@ -14,11 +16,18 @@ function Lists() {
     Lists.length || loadLists();
   }, []);
 
-  const addList = (item) => {
-    setLists((lists) => [...lists, item]);
+  const addList = async (item) => {
+    if(item) {
+      const savedList = await createList(item);
+
+      if(savedList) {
+        setLists((lists) => [...lists, savedList]);
+      }
+    }
   };
 
   const deleteList = (id) => {
+    deleteFromAPI(id);
     setLists((lists) => lists.filter(list => list.id !== id));
   };
   
