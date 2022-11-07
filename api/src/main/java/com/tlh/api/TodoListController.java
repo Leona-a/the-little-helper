@@ -25,6 +25,7 @@ public class TodoListController {
         return todoListService.getTodoList();
     }
     
+    @VisitLimit(limitCounts=10,timeout=90)
     @PostMapping
     public TodoList createList(@RequestBody TodoList list) {
         return todoListService.create(list);

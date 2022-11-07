@@ -16,7 +16,8 @@ public class TodoListService {
     public void delete(Integer id) {
         var exists = repo.existsById(id);
         if(!exists) {
-            throw new IllegalStateException("Missing resource identified by: " + id);
+            throw new IllegalStateException("Missing resource identif"
+                    + "ied by: " + id);
         }
         
         repo.deleteById(id);
