@@ -13,8 +13,8 @@ function Lists() {
       setLists(await getLists());
     }
 
-    Lists.length || loadLists();
-  }, []);
+    lists.length || loadLists();
+  }, [lists.length]);
 
   const addList = async (item) => {
     if(item) {
@@ -34,6 +34,8 @@ function Lists() {
   return (
     <div className="block flex-none">
       <p className="text-xl center block mt-9">My Lists</p>
+      {lists.length < 1 && <p className="my-9">Use the Textbox below to create a new List</p>}
+
       {lists.map(list => <ListRow list={list} key={list.id} deleteList={deleteList} />)}
       <NewList addList={addList} />
     </div>

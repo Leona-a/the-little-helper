@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from 'react-toastify';
+import { getUserToken } from "../../lib/listService";
 
 function createNewList(listName) {
     if(listName.length < 2) {
@@ -11,9 +12,11 @@ function createNewList(listName) {
     return {
         // id: Math.floor(Math.random() * (99999999 - 3 + 1)) + 3,
         name: listName,
-        userToken: "user1",
+        userToken: getUserToken(),
     }
 }
+
+// This is the list modification function
 
 function NewList({ addList }) {
     const [listName, setListName] = useState('');
@@ -30,7 +33,7 @@ function NewList({ addList }) {
             />
 
             <button
-                className="inline-flex justify-center rounded-md border border-transparent bg-[black] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="inline-flex justify-center rounded-md border border-transparent bg-[#969696] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 type="submit"
                 onClick={() => addList(createNewList(listName))}
             >

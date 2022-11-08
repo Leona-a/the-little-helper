@@ -11,6 +11,6 @@ import org.springframework.data.repository.query.Param;
  *
  * @author coola
  */
-public interface TodoListRepo extends CrudRepository<TodoList, Integer> {
-    Iterable<TodoList> findByUserToken(@Param("userToken") String userToken);      // using method
+public interface TodoListItemRepo extends CrudRepository<TodoListItem, Integer> {
+    Iterable<TodoListItem> findByListId(@Param("listId") int listId);
 }
