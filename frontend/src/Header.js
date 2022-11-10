@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from './logo.svg';
 import uuid from 'react-uuid';
 import jwt_decode from 'jwt-decode';
+import { getUserObject } from "./lib/utils";
 
 var deviceId = localStorage.getItem('deviceId');
 if (!deviceId) {
@@ -30,6 +31,7 @@ function Header() {
       callback: (response) => {
         const userObject = jwt_decode(response.credential);
         sessionStorage.setItem('userId', userObject.sub);
+        sessionStorage.setItem('userObject', JSON.stringify(userObject));
         setLoggedIn(Boolean(sessionStorage.getItem('userId')));
         navigate("/welcome");
         console.log('responseGoogle userObject', userObject);
@@ -44,6 +46,8 @@ function Header() {
     setLoggedIn(Boolean(sessionStorage.getItem('userId')));
   }, [loggedIn, navigate])
 
+  const user = getUserObject();
+
   return (
     <header className="flex items-end justify-between pt-5">
       <div id="main-logo">
@@ -52,7 +56,8 @@ function Header() {
       </div>
 
       <div className="mr-9" id="main-menu">
-        {loggedIn || <div id="SignInDiv" className="mb-9"></div>}
+        {user && <div className="text-[#969696] mb-9 text-right">Welcome {user.given_name}!</div>}
+        {loggedIn || <div id="SignInDiv" className="mb-9  text-right"></div>}
         <Link className="text-base text-lg text-gray-500 hover:text-gray-900 mr-7" to="/welcome">Home</Link>
         <Link className="text-base text-lg text-gray-500 hover:text-gray-900 mr-7 " to="/lists">My Lists</Link>
         {loggedIn && <button
@@ -61,6 +66,7 @@ function Header() {
           onClick={() => {
             console.log("clicked");
             sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('userObject');
             setLoggedIn(false);
             navigate("/welcome");
           }}>
