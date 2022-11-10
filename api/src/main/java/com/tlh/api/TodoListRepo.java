@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 /**
  *
- * @author coola
+ * @author Afiemo
  */
 public interface TodoListRepo extends CrudRepository<TodoList, Integer> {
     Iterable<TodoList> findByUserToken(@Param("userToken") String userToken);      // using method

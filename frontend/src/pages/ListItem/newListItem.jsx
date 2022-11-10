@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import { toast } from 'react-toastify';
-import { getLoggedInUserId } from "../../lib/listService";
 
 function createNewListItem(listItemName, list) {
   if (listItemName.length < 2) {
     toast.error("Please enter a valid Item");
-
-    return false;
-  }
-
-  if (!getLoggedInUserId()) {
-    toast.error("You must be logged in to add items to this list");
 
     return false;
   }

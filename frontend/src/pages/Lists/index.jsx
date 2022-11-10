@@ -37,7 +37,7 @@ function Lists() {
       {lists.length < 1 && <p className="my-9">Use the Textbox below to create a new List</p>}
 
       {lists.map(list => <ListRow list={list} key={list.id} deleteList={deleteList} />)}
-      <NewList addList={addList} />
+      <NewList addList={addList} listCount={lists.length} />
     </div>
   );
 }

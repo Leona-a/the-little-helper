@@ -1,25 +1,35 @@
 import React, { useState } from "react";
 import { toast } from 'react-toastify';
 import { getUserToken } from "../../lib/listService";
+import { userLoggedIn } from "../../lib/utils";
 
-function createNewList(listName) {
-    if(listName.length < 2) {
-        toast.error("Please enter a valid list name");
 
-        return false;
-    }
-
-    return {
-        // id: Math.floor(Math.random() * (99999999 - 3 + 1)) + 3,
-        name: listName,
-        userToken: getUserToken(),
-    }
-}
 
 // This is the list modification function
 
-function NewList({ addList }) {
+function NewList({ addList, listCount }) {
     const [listName, setListName] = useState('');
+
+    const createNewList = (name) => {
+        if (name.length < 2) {
+            toast.error("Please enter a valid list name");
+
+            return false;
+        }
+
+        if (listCount > 1 && !userLoggedIn()) {
+            toast.info(
+                <div>
+                    <p className="mb-3">You must be signed in to have more than two lists</p>
+                    <p>Click on "Sign in with google"</p>
+                </div>, {autoClose: 10000}
+            );
+
+            return false;
+        }
+
+        return { name, userToken: getUserToken() }
+    }
     return (
         <div >
             <input

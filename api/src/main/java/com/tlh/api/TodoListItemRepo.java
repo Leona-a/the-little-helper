@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 /**
  *
- * @author coola
+ * @author Afiemo
  */
 public interface TodoListItemRepo extends CrudRepository<TodoListItem, Integer> {
     Iterable<TodoListItem> findByListId(@Param("listId") int listId);
