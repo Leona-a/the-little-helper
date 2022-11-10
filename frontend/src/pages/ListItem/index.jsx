@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { MdScreenShare } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { createListItem, deleteListItem as apiDeleteListItem, getListItems, toggleListItem as apiToggleListItem } from "../../lib/listItemService";
 import { getListById } from "../../lib/listService";
 import ListItemRow from "./listItemRow";
 import NewListItem from "./newListItem";
+import ReactTooltip from 'react-tooltip';
+import { userLoggedIn } from "../../lib/utils";
 
 function ListItem() {
   const { id } = useParams();
@@ -57,13 +60,31 @@ function ListItem() {
     apiToggleListItem(listItems.find(listItem => listItem.id === id));
   };
 
+  const formatListForEmail = (listItems) => encodeURIComponent(
+    listItems.map(
+      (item, index) => `${index + 1}) ${item.name}`
+    ).join("\n")
+  );
+
   return (
     <div className="block flex-none">
-      <p className="text-xl center block mt-9">Manage List: {list.name}</p>
+      <div className="flex items-center mt-9 ">
+        <p className="flex-none text-xl center grow block">Manage List: {list.name}</p>
+        {userLoggedIn()
+          ? null
+          : <a
+            data-tip="Send as Email"
+            href={`mailto:?subject=Checkout%20My%20List: ${list.name}&body=${formatListForEmail(listItems)}`}
+            className="flex-none text-[#969696] hover:text-black align-middle text-3xl ml-9">
+            <MdScreenShare />
+          </a>
+        }
+      </div>
       {listItems.length < 1 && <p className="my-9">Use the Textbox below to create Items in your List</p>}
 
       {listItems.map(listItem => <ListItemRow listItem={listItem} key={listItem.id} deleteListItem={deleteListItem} toggleListItem={toggleListItem} />)}
       <NewListItem addListItem={addListItem} list={list} />
+      <ReactTooltip />
     </div>
   );
 }
