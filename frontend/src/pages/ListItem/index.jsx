@@ -13,7 +13,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsFillShareFill } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 import { AiFillMail } from 'react-icons/ai';
-import {FaWhatsappSquare} from 'react-icons/fa';
+import { FaWhatsappSquare } from 'react-icons/fa';
+import { WhatsappShareButton } from "react-share";
 
 function ListItem() {
   const { id } = useParams();
@@ -73,7 +74,7 @@ function ListItem() {
     ).join("\n")
   );
 
-  return (
+    return (
     <div className="block flex-none">
         <div className="flex items-center mt-9 ">
         <p className="flex-none text-xl center grow block">Manage List: {list.name}</p>
@@ -85,9 +86,9 @@ function ListItem() {
          <Dropdown.Menu>
          <Dropdown.Item href={`mailto:?subject=Checkout%20My%20List: ${list.name}&body=${formatListForEmail(listItems)}`} >
          <AiFillMail /></Dropdown.Item>
-         <Dropdown.Item href={`https://twitter.com/intent/tweet?text=${formatListForEmail(listItems)}`}>
+         <Dropdown.Item href={`https://twitter.com/intent/tweet?text=${list.name}&text=${formatListForEmail(listItems)}`}>
          <BsTwitter /></Dropdown.Item>
-        <Dropdown.Item href={`https://api.whatsapp.com/send?text=${formatListForEmail(listItems)}`}>
+         <Dropdown.Item href={`https://api.whatsapp.com/send?text=${list.name}${formatListForEmail(listItems)}`}>
          <FaWhatsappSquare/></Dropdown.Item>
          </Dropdown.Menu>
          </Dropdown>
