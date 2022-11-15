@@ -56,3 +56,18 @@ export async function createList(list) {
   }
 }
 
+export async function renameList(list) {
+  try {
+    const headers = { 'Accept': 'application/json', 'Content-Type': 'application/json' };
+    const body = JSON.stringify(list);
+    const method = 'PUT';
+    const options = { method, headers, body };
+    const response = await fetch(`http://localhost:8080/api/${API_PATH}`, options);
+    const data = await response.json();
+
+    return data;
+  } catch (e) {
+    return false;
+  }
+}
+
