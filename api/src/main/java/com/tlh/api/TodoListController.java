@@ -22,10 +22,22 @@ public class TodoListController {
     public TodoListController(TodoListService todoListService) {
         this.todoListService = todoListService;
     }
+
     
     @Autowired
     public void ToDoListUserController(TodoListUserService todoListUserService){
         this.todoListUserService = todoListUserService;
+
+
+    @GetMapping(path = "{userToken}")
+    public Iterable<TodoList> getTodoList(@PathVariable("userToken") String userToken) {
+        return todoListService.getTodoList(userToken);
+    }
+    
+    @GetMapping(path = "{userToken}/{listId}")
+    public Optional<TodoList> getTodoListById(@PathVariable("listId") int id) {
+        return todoListService.getTodoListById(id);
+
     }
     
     @GetMapping(path = "{userToken}")

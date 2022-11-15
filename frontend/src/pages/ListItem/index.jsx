@@ -7,6 +7,14 @@ import ListItemRow from "./listItemRow";
 import NewListItem from "./newListItem";
 import ReactTooltip from 'react-tooltip';
 import { userLoggedIn } from "../../lib/utils";
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BsFillShareFill } from 'react-icons/bs';
+import { BsTwitter } from 'react-icons/bs';
+import { AiFillMail } from 'react-icons/ai';
+import {FaWhatsappSquare} from 'react-icons/fa';
+
 
 function ListItem() {
   const { id } = useParams();
@@ -68,10 +76,29 @@ function ListItem() {
 
   return (
     <div className="block flex-none">
+
       <div className="flex items-center mt-9 ">
         <p className="flex-none text-xl center grow block">Manage List: {list.name}</p>
         {userLoggedIn()
           ? null
+
+        <div className="flex items-center mt-9 ">
+        <p className="flex-none text-xl center grow block">Manage List: {list.name}</p>
+        {userLoggedIn()
+         ? <Dropdown>
+         <Dropdown.Toggle variant="success" id="dropdown-basic" menuVariant='green'>
+         <BsFillShareFill />
+         </Dropdown.Toggle>
+         <Dropdown.Menu>
+         <Dropdown.Item href={`mailto:?subject=Checkout%20My%20List: ${list.name}&body=${formatListForEmail(listItems)}`} >
+         <AiFillMail /></Dropdown.Item>
+         <Dropdown.Item href={`https://twitter.com/intent/tweet?text=${list.name}&text=${formatListForEmail(listItems)}`}>
+         <BsTwitter /></Dropdown.Item>
+         <Dropdown.Item href={`https://api.whatsapp.com/send?text=${list.name}${formatListForEmail(listItems)}`}>
+         <FaWhatsappSquare/></Dropdown.Item>
+         </Dropdown.Menu>
+         </Dropdown>
+
           : <a
             data-tip="Send as Email"
             href={`mailto:?subject=Checkout%20My%20List: ${list.name}&body=${formatListForEmail(listItems)}`}
