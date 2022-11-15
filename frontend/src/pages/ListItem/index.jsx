@@ -14,7 +14,7 @@ import { BsFillShareFill } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 import { AiFillMail } from 'react-icons/ai';
 import { FaWhatsappSquare } from 'react-icons/fa';
-import { WhatsappShareButton } from "react-share";
+
 
 function ListItem() {
   const { id } = useParams();
