@@ -54,7 +54,6 @@ export async function createList(list) {
   } catch (e) {
     return false;
   }
-
 }
 
 export async function renameList(list) {
@@ -70,6 +69,5 @@ export async function renameList(list) {
   } catch (e) {
     return false;
   }
-
 }
 
