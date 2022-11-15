@@ -13,8 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsFillShareFill } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 import { AiFillMail } from 'react-icons/ai';
-import { FaWhatsappSquare } from 'react-icons/fa';
-
+import {FaWhatsappSquare} from 'react-icons/fa';
 
 function ListItem() {
   const { id } = useParams();
@@ -74,7 +73,7 @@ function ListItem() {
     ).join("\n")
   );
 
-    return (
+  return (
     <div className="block flex-none">
         <div className="flex items-center mt-9 ">
         <p className="flex-none text-xl center grow block">Manage List: {list.name}</p>
