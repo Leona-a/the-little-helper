@@ -1,5 +1,6 @@
 package com.tlh.api;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +21,16 @@ public class TodoListController {
         this.todoListService = todoListService;
     }
 
-    @GetMapping
-    public Iterable<TodoList> getTodoList() {
-        return todoListService.getTodoList();
+    @GetMapping(path = "{userToken}")
+    public Iterable<TodoList> getTodoList(@PathVariable("userToken") String userToken) {
+        return todoListService.getTodoList(userToken);
     }
     
-    @VisitLimit(limitCounts=10,timeout=90)
+    @GetMapping(path = "{userToken}/{listId}")
+    public Optional<TodoList> getTodoListById(@PathVariable("listId") int id) {
+        return todoListService.getTodoListById(id);
+    }
+    
     @PostMapping
     public TodoList createList(@RequestBody TodoList list) {
         return todoListService.create(list);

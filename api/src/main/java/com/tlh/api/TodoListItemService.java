@@ -5,16 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TodoListService {
+public class TodoListItemService {
 
     @Autowired
-    TodoListRepo repo;
+    TodoListItemRepo repo;
 
-    public Iterable<TodoList> getTodoList(String userToken) {
-        return repo.findByUserToken(userToken);
+    public Iterable<TodoListItem> getTodoListItems(int listId) {
+        return repo.findByListId(listId);
     }
 
-    public Optional<TodoList> getTodoListById(Integer id) {
+    public Optional<TodoListItem> getTodoListItemById(Integer id) {
         ensureListExists(id);
         return repo.findById(id);
     }
@@ -32,7 +32,11 @@ public class TodoListService {
         repo.deleteById(id);
     }
 
-    public TodoList create(TodoList list) {
-        return repo.save(list);
+    public TodoListItem create(TodoListItem listItem) {
+        return repo.save(listItem);
+    }
+
+    public TodoListItem update(TodoListItem listItem) {
+        return repo.save(listItem);
     }
 }
