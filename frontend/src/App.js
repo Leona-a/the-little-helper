@@ -4,7 +4,8 @@ import Header from './Header';
 import Layout from './Layout';
 import PageRouter from './Router';
 import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import "popups/css/popupS.min.css";
 
 function App() {
   return (

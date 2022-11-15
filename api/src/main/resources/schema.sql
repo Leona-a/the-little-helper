@@ -9,3 +9,8 @@ CREATE TABLE item (
    `name` VARCHAR(200) NOT NULL, 
    listId INT NOT NULL
 );
+CREATE TABLE userId(
+   userId INTEGER  PRIMARY KEY AUTO_INCREMENT,
+   `email` VARCHAR(200) NOT NULL,
+   banState BOOLEAN false
+);
