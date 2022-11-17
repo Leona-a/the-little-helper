@@ -35,4 +35,14 @@ public class TodoListService {
     public TodoList create(TodoList list) {
         return repo.save(list);
     }
+
+    public void rename(Integer id, String name) {
+        ensureListExists(id);
+        Optional<TodoList> optionalTodoList = repo.findById(id);
+        if (optionalTodoList.isPresent()) {
+            TodoList todoList = optionalTodoList.get();
+            todoList.setName(name);
+            repo.save(todoList);
+        }
+    }
 }
