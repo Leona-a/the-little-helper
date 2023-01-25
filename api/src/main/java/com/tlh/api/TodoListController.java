@@ -42,10 +42,10 @@ public class TodoListController {
         return todoListService.getTodoListById(id);
     }
 
-    @GetMapping(path = "{userId}/{email}")
-    public Optional<TodoListUser> getTodoListUserById(@PathVariable("email") Integer id){
-        return todoListUserService.getTodoUserItemByUserId(id);
-    }
+//    @GetMapping(path = "{userId}/{email}")
+//    public Optional<TodoListUser> getTodoListUserById(@PathVariable("email") Integer id){
+//        return todoListUserService.getTodoUserItemByUserId(id);
+//    }
     @PostMapping
     public TodoList createList(@RequestBody TodoList list) {
         return todoListService.create(list);
